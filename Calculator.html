@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Basic Calculator</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #f2f2f2;
+		}
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			max-width: 400px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: white;
+			box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+			border-radius: 5px;
+			box-sizing: border-box;
+		}
+		.input {
+			width: 100%;
+			margin-bottom: 10px;
+			padding: 10px;
+			font-size: 18px;
+			border: none;
+			border-radius: 3px;
+			box-sizing: border-box;
+		}
+		.btn {
+			width: calc(25% - 5px);
+			height: 50px;
+			margin: 0 5px 10px 0;
+			padding: 10px;
+			font-size: 18px;
+			color: white;
+			background-color: #4CAF50;
+			border: none;
+			border-radius: 3px;
+			cursor: pointer;
+			box-sizing: border-box;
+		}
+		.btn:hover {
+			background-color: #3e8e41;
+		}
+		.btn:active {
+			background-color: #1f4422;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<input class="input" type="text" id="output" placeholder="0" readonly>
+		<button class="btn" onclick="clearOutput()">C</button>
+		<button class="btn" onclick="appendToOutput('%')">%</button>
+		<button class="btn" onclick="appendToOutput('/')">/</button>
+		<button class="btn" onclick="appendToOutput('*')">*</button>
+		<button class="btn" onclick="appendToOutput('7')">7</button>
+		<button class="btn" onclick="appendToOutput('8')">8</button>
+		<button class="btn" onclick="appendToOutput('9')">9</button>
+		<button class="btn" onclick="appendToOutput('-')">-</button>
+		<button class="btn" onclick="appendToOutput('4')">4</button>
+		<button class="btn" onclick="appendToOutput('5')">5</button>
+		<button class="btn" onclick="appendToOutput('6')">6</button>
+		<button class="btn" onclick="appendToOutput('+')">+</button>
+		<button class="btn" onclick="appendToOutput('1')">1</button>
+		<button class="btn" onclick="appendToOutput('2')">2</button>
+		<button class="btn" onclick="appendToOutput('3')">3</button>
+		<button class="btn" onclick="calculate()">=</button>
+	</div>
+	<script>
+		let output = document.getElementById("output");
+
+		function appendToOutput(value) {
+			if (output.value === "0") {
+				output.value = value;
+			} else {
+				output.value += value;
+			}
+		}
+
+		function clearOutput() {
+			output.value = "0";
+		}
+
+		function calculate() {
+			output.value = eval(output.value);
+		}
+	</script>
+</body>
+</html>
